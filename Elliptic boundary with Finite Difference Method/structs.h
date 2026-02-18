@@ -18,3 +18,17 @@ struct Subdomain
 		UniformY = uniformY;
 	}
 };
+
+struct DiagonalMatrix
+{
+	int Size = 0, DiagonalsCount = 5;
+	std::vector<double> Data;
+	std::vector<int> Offsets;
+
+	DiagonalMatrix(int size)
+	{
+		Size = size;
+		Data.resize(size * DiagonalsCount);
+		Offsets.resize(DiagonalsCount);
+	}
+};

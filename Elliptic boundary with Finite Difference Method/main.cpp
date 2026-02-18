@@ -15,6 +15,7 @@ int main()
    if (correctData)
    {
       BuildGrid(x, y, subdomains);
+      DiagonalMatrix matrix(x.size());
    }
 
    return 0;
