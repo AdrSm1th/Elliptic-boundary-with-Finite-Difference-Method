@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36429.23 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elliptic boundary with Finite Difference Method", "Elliptic boundary with Finite Difference Method\Elliptic boundary with Finite Difference Method.vcxproj", "{6ED6EE71-A5D8-4C8F-9AC8-D6AE21251F2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6ED6EE71-A5D8-4C8F-9AC8-D6AE21251F2E}.Debug|x64.ActiveCfg = Debug|x64
+		{6ED6EE71-A5D8-4C8F-9AC8-D6AE21251F2E}.Debug|x64.Build.0 = Debug|x64
+		{6ED6EE71-A5D8-4C8F-9AC8-D6AE21251F2E}.Debug|x86.ActiveCfg = Debug|Win32
+		{6ED6EE71-A5D8-4C8F-9AC8-D6AE21251F2E}.Debug|x86.Build.0 = Debug|Win32
+		{6ED6EE71-A5D8-4C8F-9AC8-D6AE21251F2E}.Release|x64.ActiveCfg = Release|x64
+		{6ED6EE71-A5D8-4C8F-9AC8-D6AE21251F2E}.Release|x64.Build.0 = Release|x64
+		{6ED6EE71-A5D8-4C8F-9AC8-D6AE21251F2E}.Release|x86.ActiveCfg = Release|Win32
+		{6ED6EE71-A5D8-4C8F-9AC8-D6AE21251F2E}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E2ABB94-3237-43A4-AFE4-A8EF3AE0C296}
+	EndGlobalSection
+EndGlobal
