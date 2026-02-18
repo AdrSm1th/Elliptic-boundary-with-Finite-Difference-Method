@@ -5,4 +5,4 @@
 #include <vector>
 #include "structs.h"
 
-void Input(int &subdomainCount, std::vector<Subdomain> &subdomains, bool &correct);
+bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains);

@@ -26,7 +26,7 @@ inline bool Check(double a, double b, double h, bool uniform)
 	}
 }
 
-void Input(int &subdomainCount, std::vector<Subdomain> &subdomains, bool &correct)
+bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains)
 {
 	std::ifstream input("input.txt");
 	input >> subdomainCount;
@@ -38,12 +38,12 @@ void Input(int &subdomainCount, std::vector<Subdomain> &subdomains, bool &correc
 		input >> uniformX >> ax >> bx >> hx >> uniformY >> ay >> by >> hy;
 
 		if (Check(ax, bx, hx, uniformX) && Check(ay, by, hy, uniformY)) subdomains[i].Init(ax, bx, ay, by, hx, hy, uniformX, uniformY);
-
 		else
 		{
-			correct = false;
-			std::cout << "Incorrect input data on subdomain: " << i + 1 << std::endl;
+			std::cout << "Incorrect input: subdomain: " << i + 1 << std::endl;
+			return false;
 		}
 	}
 	input.close();
+	return true;
 }
