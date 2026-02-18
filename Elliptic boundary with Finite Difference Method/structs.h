@@ -2,18 +2,6 @@
 
 #pragma once 
 
-struct Node
-{
-	double X, Y;
-	int GlobalNum;
-	Node(double x, double y, int globalNum)
-	{
-		X = x;
-		Y = y;
-		GlobalNum = globalNum;
-	}
-};
-
 struct Subdomain
 {
 	double Ax, Bx, Ay, By, Hx, Hy;

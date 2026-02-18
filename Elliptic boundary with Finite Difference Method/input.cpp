@@ -5,7 +5,7 @@
 #include <iostream>
 #include "input.h"
 
-bool Check(double a, double b, double h, bool uniform)
+inline bool Check(double a, double b, double h, bool uniform)
 {
 	//For a uniform grid hx and hy are the step. For a non uniform grid hx and hy are q
 	if (uniform)

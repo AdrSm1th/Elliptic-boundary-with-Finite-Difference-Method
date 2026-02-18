@@ -123,10 +123,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="grid_maker.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="grid_maker.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="structs.h" />
   </ItemGroup>
