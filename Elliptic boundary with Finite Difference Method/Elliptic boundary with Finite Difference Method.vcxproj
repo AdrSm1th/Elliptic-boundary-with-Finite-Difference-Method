@@ -126,10 +126,13 @@
     <ClCompile Include="grid_maker.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="matrix_maker.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="funcsions.h" />
     <ClInclude Include="grid_maker.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="matrix_maker.h" />
     <ClInclude Include="structs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

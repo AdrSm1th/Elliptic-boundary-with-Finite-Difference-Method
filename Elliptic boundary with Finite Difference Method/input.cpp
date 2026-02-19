@@ -33,11 +33,11 @@ bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains)
 	subdomains.resize(subdomainCount);
 	for (int i = 0; i < subdomainCount; i++)
 	{
-		double ax, bx, ay, by, hx, hy;
+		double ax, bx, ay, by, hx, hy, lambda;
 		bool uniformX, uniformY;
-		input >> uniformX >> ax >> bx >> hx >> uniformY >> ay >> by >> hy;
+		input >> uniformX >> ax >> bx >> hx >> uniformY >> ay >> by >> hy >> lambda;
 
-		if (Check(ax, bx, hx, uniformX) && Check(ay, by, hy, uniformY)) subdomains[i].Init(ax, bx, ay, by, hx, hy, uniformX, uniformY);
+		if (Check(ax, bx, hx, uniformX) && Check(ay, by, hy, uniformY)) subdomains[i].Init(ax, bx, ay, by, hx, hy, uniformX, uniformY, lambda);
 		else
 		{
 			std::cout << "Incorrect input: subdomain: " << i + 1 << std::endl;
@@ -46,4 +46,9 @@ bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains)
 	}
 	input.close();
 	return true;
+}
+
+void InputBoundaryCondition(std::vector<int> dirichleNodes)
+{
+	//first row 
 }
