@@ -9,12 +9,13 @@ int main()
 {
    int subdomainCount = 0;
    std::vector<Subdomain> subdomains;
+   Grid grid;
    std::vector<double> x, y;
 
-   bool correctData = Input(subdomainCount, subdomains);
+   bool correctData = Input(subdomainCount, subdomains, grid);
    if (correctData)
    {
-      BuildGrid(x, y, subdomains);
+      BuildGrid(grid, subdomains);
       DiagonalMatrix matrix(x.size());
    }
 

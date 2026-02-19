@@ -5,4 +5,4 @@
 #include <vector>
 #include "structs.h"
 
-void BuildGrid(std::vector<double> &x, std::vector<double> &y, std::vector<Subdomain> &subdomains);
+void BuildGrid(Grid &grid, std::vector<Subdomain> &subdomains);

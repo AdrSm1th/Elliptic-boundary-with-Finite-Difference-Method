@@ -26,18 +26,20 @@ inline bool Check(double a, double b, double h, bool uniform)
 	}
 }
 
-bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains)
+bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains, Grid &grid)
 {
 	std::ifstream input("input.txt");
-	input >> subdomainCount;
+	double lambda;
+	input >> lambda >> subdomainCount;
+	grid.Lambda = lambda;
 	subdomains.resize(subdomainCount);
 	for (int i = 0; i < subdomainCount; i++)
 	{
 		double ax, bx, ay, by, hx, hy, lambda;
 		bool uniformX, uniformY;
-		input >> uniformX >> ax >> bx >> hx >> uniformY >> ay >> by >> hy >> lambda;
+		input >> uniformX >> ax >> bx >> hx >> uniformY >> ay >> by >> hy;
 
-		if (Check(ax, bx, hx, uniformX) && Check(ay, by, hy, uniformY)) subdomains[i].Init(ax, bx, ay, by, hx, hy, uniformX, uniformY, lambda);
+		if (Check(ax, bx, hx, uniformX) && Check(ay, by, hy, uniformY)) subdomains[i].Init(ax, bx, ay, by, hx, hy, uniformX, uniformY);
 		else
 		{
 			std::cout << "Incorrect input: subdomain: " << i + 1 << std::endl;

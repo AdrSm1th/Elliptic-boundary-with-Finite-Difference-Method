@@ -6,7 +6,7 @@ struct Subdomain
 {
 	double Ax, Bx, Ay, By, Hx, Hy, Lambda;
 	bool UniformX, UniformY;
-	void Init(double ax, double bx, double ay, double by, double hx, double hy, bool uniformX, bool uniformY, double lambda)
+	void Init(double ax, double bx, double ay, double by, double hx, double hy, bool uniformX, bool uniformY)
 	{
 		Ax = ax;
 		Bx = bx;
@@ -16,7 +16,6 @@ struct Subdomain
 		Hy = hy;
 		UniformX = uniformX;
 		UniformY = uniformY;
-		Lambda = lambda;
 	}
 };
 
@@ -32,4 +31,11 @@ struct DiagonalMatrix
 		Data.resize(size * DiagonalsCount);
 		Offsets.resize(DiagonalsCount);
 	}
+};
+
+struct Grid
+{
+	std::vector<double> X;
+	std::vector<double> Y;
+	double Lambda;
 };

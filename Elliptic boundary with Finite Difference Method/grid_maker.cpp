@@ -4,7 +4,7 @@
 #include "grid_maker.h"
 
 //Fills the x and y arrays
-void BuildGrid(std::vector<double> &x, std::vector<double> &y, std::vector<Subdomain> &subdomains)
+void BuildGrid(Grid &grid, std::vector<Subdomain> &subdomains)
 {
 	std::set<double> tX, tY;
 	for (const auto &subdomain : subdomains)
@@ -55,6 +55,6 @@ void BuildGrid(std::vector<double> &x, std::vector<double> &y, std::vector<Subdo
 		}
 	}
 
-	x.assign(tX.begin(), tX.end());
-	y.assign(tY.begin(), tY.end());
+	grid.X.assign(tX.begin(), tX.end());
+	grid.Y.assign(tY.begin(), tY.end());
 }
