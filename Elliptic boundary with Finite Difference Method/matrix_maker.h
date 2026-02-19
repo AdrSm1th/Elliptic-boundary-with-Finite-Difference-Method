@@ -4,3 +4,5 @@
 
 #include <vector>
 #include "structs.h"
+
+void BuildMatrix(DiagonalMatrix &matrix, Grid &grid);

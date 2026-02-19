@@ -30,6 +30,11 @@ struct DiagonalMatrix
 		Size = size;
 		Data.resize(size * DiagonalsCount);
 		Offsets.resize(DiagonalsCount);
+		Offsets[0] = -size;
+		Offsets[1] = -1;
+		Offsets[2] = 0;
+		Offsets[3] = 1;
+		Offsets[4] = size;
 	}
 };
 
