@@ -5,4 +5,4 @@
 #include <vector>
 #include "structs.h"
 
-void BuildMatrix(DiagonalMatrix &matrix, Grid &grid);
+void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> f);

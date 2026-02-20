@@ -42,5 +42,5 @@ struct Grid
 {
 	std::vector<double> X;
 	std::vector<double> Y;
-	double Lambda;
+	double Lambda, Gamma;
 };

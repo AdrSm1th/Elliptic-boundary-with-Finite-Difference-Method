@@ -10,14 +10,17 @@ int main()
 {
    int subdomainCount = 0;
    std::vector<Subdomain> subdomains;
+   std::vector<double> f;
    Grid grid;
 
    bool correctData = Input(subdomainCount, subdomains, grid);
    if (correctData)
    {
       BuildGrid(grid, subdomains);
-      DiagonalMatrix matrix(grid.X.size() * grid.Y.size());
-      BuildMatrix(matrix, grid);
+      int mSize = grid.X.size() * grid.Y.size();
+      DiagonalMatrix matrix(mSize);
+      f.resize(mSize);
+      BuildMatrix(matrix, grid, f);
    }
 
    return 0;

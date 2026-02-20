@@ -29,9 +29,10 @@ inline bool Check(double a, double b, double h, bool uniform)
 bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains, Grid &grid)
 {
 	std::ifstream input("input.txt");
-	double lambda;
-	input >> lambda >> subdomainCount;
+	double lambda, gamma;
+	input >> lambda >> gamma >> subdomainCount;
 	grid.Lambda = lambda;
+	grid.Gamma = gamma;
 	subdomains.resize(subdomainCount);
 	for (int i = 0; i < subdomainCount; i++)
 	{
