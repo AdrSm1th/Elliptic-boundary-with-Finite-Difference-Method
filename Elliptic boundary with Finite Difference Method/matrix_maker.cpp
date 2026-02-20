@@ -2,6 +2,11 @@
 
 #include "matrix_maker.h"
 
+inline double Func(double x, double y)
+{
+	return x + y;
+}
+
 void BuildMatrix(DiagonalMatrix &matrix, Grid &grid)
 {
 	int sizeX = grid.X.size();
@@ -9,11 +14,16 @@ void BuildMatrix(DiagonalMatrix &matrix, Grid &grid)
 	int n = matrix.Size;
 
 	//Traversal of non-boundary nodes
-	for (int i = 1; i < sizeY - 1; i++)
+	for (int i = 0; i < sizeY; i++)
 	{
-		for (int j = 1; j < sizeX - 1; j++)
+		for (int j = 0; j < sizeX; j++)
 		{
 			int globalNum = i * sizeX + j;
+			if ((i - 1 < 0) || (i + 1 >= sizeY) || (j - 1 < 0) || (j + 1 >= sizeX))
+			{
+				matrix.Data[2 * n + globalNum] = Func(grid.X[j], grid.Y[i]);
+				continue;
+			}
 
 			//X term
 			double hprev = grid.X[j] - grid.X[j - 1];
@@ -31,7 +41,7 @@ void BuildMatrix(DiagonalMatrix &matrix, Grid &grid)
 				c2 = 2 * grid.Lambda / (hprev * h);
 				c3 = -grid.Lambda / (h * (h + hprev));
 			}
-			matrix.Data[1 * n + globalNum] += c1;
+			matrix.Data[n + globalNum] += c1;
 			matrix.Data[2 * n + globalNum] += c2;
 			matrix.Data[3 * n + globalNum] += c3;
 

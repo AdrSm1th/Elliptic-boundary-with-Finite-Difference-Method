@@ -49,8 +49,3 @@ bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains, Grid &grid)
 	input.close();
 	return true;
 }
-
-void InputBoundaryCondition(std::vector<int> dirichleNodes)
-{
-	//first row 
-}

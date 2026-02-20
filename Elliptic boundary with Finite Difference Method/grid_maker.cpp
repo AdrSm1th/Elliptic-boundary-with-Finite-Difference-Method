@@ -16,6 +16,7 @@ void BuildGrid(Grid &grid, std::vector<Subdomain> &subdomains)
 		{
 			int xCount = static_cast<int>((bx - ax) / hx) + 1;
 			double currentX = ax;
+			tX.insert(currentX);
 			for (int j = 1; j < xCount; j++)
 			{
 				currentX += hx;
@@ -37,6 +38,7 @@ void BuildGrid(Grid &grid, std::vector<Subdomain> &subdomains)
 		{
 			int yCount = static_cast<int>((by - ay) / hy) + 1;
 			double currentY = ay;
+			tY.insert(currentY);
 			for (int j = 1; j < yCount; j++)
 			{
 				currentY += hy;

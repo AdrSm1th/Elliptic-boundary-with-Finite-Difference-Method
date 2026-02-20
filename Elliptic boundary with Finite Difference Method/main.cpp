@@ -16,7 +16,7 @@ int main()
    if (correctData)
    {
       BuildGrid(grid, subdomains);
-      DiagonalMatrix matrix(grid.X.size());
+      DiagonalMatrix matrix(grid.X.size() * grid.Y.size());
       BuildMatrix(matrix, grid);
    }
 
