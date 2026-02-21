@@ -7,7 +7,12 @@ inline double Func(double x, double y)
 	return x + y;
 }
 
-void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> f)
+inline double f(double x, double y)
+{
+	return x + y;
+}
+
+void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> &b)
 {
 	int sizeX = grid.X.size();
 	int sizeY = grid.Y.size();
@@ -22,7 +27,7 @@ void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> f)
 			if ((i - 1 < 0) || (i + 1 >= sizeY) || (j - 1 < 0) || (j + 1 >= sizeX))
 			{
 				matrix.Data[2 * n + globalNum] = 1;
-				f[globalNum] = Func(grid.X[j], grid.Y[i]);
+				b[globalNum] = Func(grid.X[j], grid.Y[i]);
 				continue;
 			}
 
@@ -34,7 +39,7 @@ void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> f)
 			{
 				c1 = -grid.Lambda / (h * h);
 				c2 = 2 * grid.Lambda / (h * h);
-				c3 = c2;
+				c3 = c1;
 			}
 			else
 			{
@@ -53,7 +58,7 @@ void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> f)
 			{
 				c1 = -grid.Lambda / (h * h);
 				c2 = 2 * grid.Lambda / (h * h);
-				c3 = c2;
+				c3 = c1;
 			}
 			else
 			{
@@ -64,6 +69,9 @@ void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> f)
 			matrix.Data[0 * n + globalNum] += c1;
 			matrix.Data[2 * n + globalNum] += c2;
 			matrix.Data[4 * n + globalNum] += c3;
+
+			matrix.Data[2 * n + globalNum] += grid.Gamma;
+			b[globalNum] = f(grid.X[j], grid.Y[i]);
 		}
 	}
 }

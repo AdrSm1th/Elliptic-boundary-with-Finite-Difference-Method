@@ -25,16 +25,16 @@ struct DiagonalMatrix
 	std::vector<double> Data;
 	std::vector<int> Offsets;
 
-	DiagonalMatrix(int size)
+	DiagonalMatrix(int size, int Nx)
 	{
 		Size = size;
 		Data.resize(size * DiagonalsCount);
 		Offsets.resize(DiagonalsCount);
-		Offsets[0] = -size;
+		Offsets[0] = -Nx;
 		Offsets[1] = -1;
 		Offsets[2] = 0;
 		Offsets[3] = 1;
-		Offsets[4] = size;
+		Offsets[4] = Nx;
 	}
 };
 
@@ -42,5 +42,5 @@ struct Grid
 {
 	std::vector<double> X;
 	std::vector<double> Y;
-	double Lambda, Gamma;
+	double Lambda = 0, Gamma = 0;
 };
