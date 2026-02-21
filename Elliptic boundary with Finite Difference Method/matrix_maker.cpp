@@ -43,9 +43,9 @@ void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> &b)
 			}
 			else
 			{
-				c1 = -grid.Lambda / (hprev * (h + hprev));
+				c1 = -grid.Lambda * 2 / (hprev * (h + hprev));
 				c2 = 2 * grid.Lambda / (hprev * h);
-				c3 = -grid.Lambda / (h * (h + hprev));
+				c3 = -grid.Lambda * 2 / (h * (h + hprev));
 			}
 			matrix.Data[n + globalNum] += c1;
 			matrix.Data[2 * n + globalNum] += c2;
@@ -62,9 +62,9 @@ void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> &b)
 			}
 			else
 			{
-				c1 = -grid.Lambda / (hprev * (h + hprev));
+				c1 = -grid.Lambda * 2 / (hprev * (h + hprev));
 				c2 = 2 * grid.Lambda / (hprev * h);
-				c3 = -grid.Lambda / (h * (h + hprev));
+				c3 = -grid.Lambda * 2 / (h * (h + hprev));
 			}
 			matrix.Data[0 * n + globalNum] += c1;
 			matrix.Data[2 * n + globalNum] += c2;
