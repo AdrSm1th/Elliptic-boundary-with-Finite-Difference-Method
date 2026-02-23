@@ -28,11 +28,12 @@ void BuildGrid(Grid &grid, std::vector<Subdomain> &subdomains)
 			double s = ax;
 			double q = subdomain.Qx;
 			tX.insert(s);
-			for (int i = 0; i < nx; i++)
+			for (int i = 1; i < nx - 1; i++)
 			{
 				s *= q;
 				tX.insert(s);
 			}
+			tX.insert(bx);
 		}
 
 		if (subdomain.UniformY)
@@ -51,11 +52,12 @@ void BuildGrid(Grid &grid, std::vector<Subdomain> &subdomains)
 			double s = ay;
 			double q = subdomain.Qy;
 			tY.insert(s);
-			for (int i = 0; i < ny; i++)
+			for (int i = 1; i < ny - 1; i++)
 			{
 				s *= q;
 				tY.insert(s);
 			}
+			tY.insert(by);
 		}
 	}
 
