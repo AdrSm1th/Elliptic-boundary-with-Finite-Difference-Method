@@ -1,12 +1,12 @@
 ﻿//main.cpp
 
 #include <vector>
-#include <iostream>
 #include "structs.h"
 #include "input.h"
 #include "grid_maker.h"
 #include "matrix_maker.h"
 #include "SLE_solver.h"
+#include "output.h"
 
 int main()
 {
@@ -24,11 +24,8 @@ int main()
       b.resize(mSize);
       q.resize(mSize);
       BuildMatrix(matrix, grid, b);
-      SolveWithGaussZeidel(1, 1e-15, matrix, b, q, 1000);
-      for (int i = 0; i < q.size(); i++)
-      {
-         std::cout << q[i] << std::endl;
-      }
+      SolveWithGaussZeidel(0.5, 1e-16, matrix, b, q, 10000);
+      Output(q, grid);
    }
 
    return 0;

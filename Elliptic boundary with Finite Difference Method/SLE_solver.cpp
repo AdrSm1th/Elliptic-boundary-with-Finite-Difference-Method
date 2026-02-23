@@ -2,7 +2,7 @@
 
 #include "SLE_solver.h"
 
-inline std::vector<double> VectorMatrixMultiplication(DiagonalMatrix a, std::vector<double> &x)
+inline std::vector<double> VectorMatrixMultiplication(DiagonalMatrix &a, std::vector<double> &x)
 {
 	size_t n = x.size();
 	std::vector<double> res(n);
@@ -17,17 +17,16 @@ inline std::vector<double> VectorMatrixMultiplication(DiagonalMatrix a, std::vec
 	return res;
 }
 
-inline std::vector<double> VectorDifference(std::vector<double> vector_1, std::vector<double> vector_2)
+inline void VectorDifference(std::vector<double> &vector_1, std::vector<double> &vector_2)
 {
 	size_t n = vector_1.size();
 	for (int i = 0; i < n; i++)
 	{
 		vector_1[i] -= vector_2[i];
 	}
-	return vector_1;
 }
 
-inline double VectorNorm(std::vector<double> vector)
+inline double VectorNorm(std::vector<double> &vector)
 {
 	double result = 0;
 	for (int i = 0; i < vector.size(); i++)
@@ -35,7 +34,7 @@ inline double VectorNorm(std::vector<double> vector)
 	return sqrt(result);
 }
 
-void SolveWithGaussZeidel(double w, double eps, DiagonalMatrix a, std::vector<double> &f, std::vector<double> &x, int maxiter)
+void SolveWithGaussZeidel(double w, double eps, DiagonalMatrix &a, std::vector<double> &f, std::vector<double> &x, int maxiter)
 {
 	size_t n = f.size();
 	double discrepancy = 0;
@@ -53,6 +52,8 @@ void SolveWithGaussZeidel(double w, double eps, DiagonalMatrix a, std::vector<do
 			x[i] += (w / a.Data[2 * n + i]) * (f[i] - sum);
 		}
 		iter++;
-		discrepancy = VectorNorm(VectorDifference(f, VectorMatrixMultiplication(a, x))) / VectorNorm(f);
+		std::vector<double> Ax = VectorMatrixMultiplication(a, x);
+		VectorDifference(Ax, f);
+		discrepancy = VectorNorm(Ax) / VectorNorm(f);
 	} while (discrepancy > eps && iter < maxiter);
 }
