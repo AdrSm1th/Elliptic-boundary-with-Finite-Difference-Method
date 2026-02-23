@@ -5,7 +5,7 @@
 #include <iostream>
 #include "input.h"
 
-inline double FindQ(double a, double b, double n, int maxiter)
+inline double FindQ(double a, double b, double n, int maxiter, double eps)
 {
 	//geometric progression;
 	int iter = 0;
@@ -18,23 +18,19 @@ inline double FindQ(double a, double b, double n, int maxiter)
 		{
 			lastB *= q;
 		}
+		if (std::abs(lastB - b) / b <= eps) return q;
 		if (lastB - b > DBL_EPSILON * std::max(lastB, b))
 		{
 			if (!prevGrow) step /= 2;
 			prevGrow = true;
 			q -= step;
 		}
-		else if (lastB - b < -DBL_EPSILON * step * 1000)
+		else
 		{
 			if (prevGrow) step /= 2;
 			prevGrow = false;
 			q += step;
 		}
-		else
-		{
-			return q;
-		}
-
 		iter++;
 	}
 	return 0;
@@ -57,13 +53,13 @@ bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains, Grid &grid)
 		if (uniformX) qx = 1;
 		else
 		{
-			qx = FindQ(ax, bx, nx, 1000);
+			qx = FindQ(ax, bx, nx, 1000, 1e-15);
 		}
 
 		if (uniformY) qy = 1;
 		else
 		{
-			qy = FindQ(ay, by, ny, 1000);
+			qy = FindQ(ay, by, ny, 1000, 1e-15);
 		}
 
 		if(qx != 0 && qy != 0) subdomains[i].Init(ax, bx, ay, by, nx, ny, uniformX, uniformY, qx, qy);

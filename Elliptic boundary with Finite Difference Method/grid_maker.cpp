@@ -28,7 +28,7 @@ void BuildGrid(Grid &grid, std::vector<Subdomain> &subdomains)
 			double s = ax;
 			double q = subdomain.Qx;
 			tX.insert(s);
-			while (abs(bx - s) > DBL_EPSILON * bx)
+			for (int i = 0; i < nx; i++)
 			{
 				s *= q;
 				tX.insert(s);
@@ -51,7 +51,7 @@ void BuildGrid(Grid &grid, std::vector<Subdomain> &subdomains)
 			double s = ay;
 			double q = subdomain.Qy;
 			tY.insert(s);
-			while (abs(by - s) > DBL_EPSILON * by)
+			for (int i = 0; i < ny; i++)
 			{
 				s *= q;
 				tY.insert(s);

@@ -4,12 +4,12 @@
 
 inline double Func(double x, double y)
 {
-	return sin(10 * x) * sin(10 * y);
+	return x*x+y*y;
 }
 
 inline double f(double x, double y)
 {
-	return 200 * sin(10 * x) * sin(10 * y) + sin(10 * x) * sin(10 * y);
+	return -4 + x * x + y * y;
 }
 
 void BuildMatrix(DiagonalMatrix &matrix, Grid &grid, std::vector<double> &b)
