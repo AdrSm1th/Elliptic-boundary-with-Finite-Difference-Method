@@ -5,25 +5,39 @@
 #include <iostream>
 #include "input.h"
 
-inline bool Check(double a, double b, double h, bool uniform)
+inline double FindQ(double a, double b, double n, int maxiter)
 {
-	//For a uniform grid hx and hy are the step. For a non uniform grid hx and hy are q
-	if (uniform)
+	//geometric progression;
+	int iter = 0;
+	double step = 1, lastB, q = 2;
+	bool prevGrow = false;
+	while (iter < maxiter)
 	{
-		return (abs(std::fmod(b - a, h)) <= DBL_EPSILON * std::abs(h)); //The number of steps must be an integer
-	}
-	else
-	{
-		//geometric progression
-		if (h <= 1) return false;
-		double s = a;
-		while (s < b)
+		lastB = a;
+		for (int i = 0; i < n - 1; i++)
 		{
-			s *= h;
-			if (std::abs(b - s) <= DBL_EPSILON * h) return true;
+			lastB *= q;
 		}
-		return false;
+		if (lastB - b > DBL_EPSILON * std::max(lastB, b))
+		{
+			if (!prevGrow) step /= 2;
+			prevGrow = true;
+			q -= step;
+		}
+		else if (lastB - b < -DBL_EPSILON * step * 1000)
+		{
+			if (prevGrow) step /= 2;
+			prevGrow = false;
+			q += step;
+		}
+		else
+		{
+			return q;
+		}
+
+		iter++;
 	}
+	return 0;
 }
 
 bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains, Grid &grid)
@@ -36,14 +50,26 @@ bool Input(int &subdomainCount, std::vector<Subdomain> &subdomains, Grid &grid)
 	subdomains.resize(subdomainCount);
 	for (int i = 0; i < subdomainCount; i++)
 	{
-		double ax, bx, ay, by, hx, hy, lambda;
+		double ax, bx, ay, by, nx, ny, qx, qy;
 		bool uniformX, uniformY;
-		input >> uniformX >> ax >> bx >> hx >> uniformY >> ay >> by >> hy;
+		input >> uniformX >> ax >> bx >> nx >> uniformY >> ay >> by >> ny;
 
-		if (Check(ax, bx, hx, uniformX) && Check(ay, by, hy, uniformY)) subdomains[i].Init(ax, bx, ay, by, hx, hy, uniformX, uniformY);
+		if (uniformX) qx = 1;
 		else
 		{
-			std::cout << "Incorrect input: subdomain: " << i + 1 << std::endl;
+			qx = FindQ(ax, bx, nx, 1000);
+		}
+
+		if (uniformY) qy = 1;
+		else
+		{
+			qy = FindQ(ay, by, ny, 1000);
+		}
+
+		if(qx != 0 && qy != 0) subdomains[i].Init(ax, bx, ay, by, nx, ny, uniformX, uniformY, qx, qy);
+		else
+		{
+			std::cout << "Incorrect input in subdomain " << i << std::endl;
 			return false;
 		}
 	}

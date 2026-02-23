@@ -4,18 +4,20 @@
 
 struct Subdomain
 {
-	double Ax, Bx, Ay, By, Hx, Hy, Lambda;
+	double Ax, Bx, Ay, By, Nx, Ny, Qx, Qy;
 	bool UniformX, UniformY;
-	void Init(double ax, double bx, double ay, double by, double hx, double hy, bool uniformX, bool uniformY)
+	void Init(double ax, double bx, double ay, double by, double nx, double ny, bool uniformX, bool uniformY, double qX, double qY)
 	{
 		Ax = ax;
 		Bx = bx;
 		Ay = ay;
 		By = by;
-		Hx = hx;
-		Hy = hy;
+		Nx = nx;
+		Ny = ny;
 		UniformX = uniformX;
 		UniformY = uniformY;
+		Qx = qX;
+		Qy = qY;
 	}
 };
 
